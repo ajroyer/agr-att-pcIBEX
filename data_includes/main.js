@@ -29,6 +29,27 @@ PennController(
         .wait()
 )
 
+// Get participant ID
+
+PennController(
+  defaultText
+    .print()
+  ,
+  newText("<p>Please enter your participant ID and then click the button below.</p>")
+  ,
+  newTextInput("ID")
+      .print()
+  ,
+  newVar("ID")
+    .settings.global()
+    .set( getTextInput("ID") )
+  ,
+  newButton("Continue to 'Instructions'")
+    .print()
+    .wait()
+)
+.log( "ID" , getVar("ID") )
+
 // Instructions
 
 // Trial template
@@ -65,3 +86,15 @@ PennController.Template(
 // Debriefing questionnaire
 
 // Thank you screen
+PennController.SendResults()
+
+PennController(
+    newText("<p>Thank you for your participation!</p>")
+        .print()
+    ,
+    newText("<p><a href='https://www.put.your/platform/confirmation/link.here'>Click here to validate your participation.</a></p>")
+        .print()
+    ,
+    newButton("void")
+        .wait()
+)

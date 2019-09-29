@@ -52,14 +52,27 @@ PennController(
 
 // Instructions
 
-// Trial template
+PennController(
+  newHtml("", "")
+)
 
+// Practice trials
+
+PennController(
+
+)
+
+// Pre-experiment screen
+
+PennController(
+  newHtml("", "")
+)
+
+// Experiment
 PennController.Template(
   variable => PennController(
     newAudio("sentence", variable.AudioFile)
         .play()
-    ,
-    newText(variable.sentence)
     ,
     newSelector()
         .settings.keys("1","2","3","4","5")
@@ -71,19 +84,50 @@ PennController.Template(
   )
   .log( "ID" , getVar("ID") )
   .log( "Item"   , variable.Item   )
-  .log( "Ending" , variable.Ending )
+  .log( "Num" , variable.Num )
+  .log( "Breaks" , variable.Breaks )
   .log( "Group"  , variable.Group  )
 )
 
-// Practice trials
-
-// Pre-experiment screen
-
-// Experiment
-
 // Dialect survey
 
+//// Instructions
+
+PennController(
+  newHtml("", "")
+)
+
+//// Survey questions
+PennController.Template(
+  variable => PennController(
+    newAudio("sentence", variable.AudioFile)
+        .play()
+    ,
+    newSelector()
+        .settings.keys("1","2","3","4","5")
+        .settings.log()
+        .wait()
+    ,
+    getAudio("sentence")
+       .wait("")
+  )
+  .log( "ID" , getVar("ID") )
+  .log( "Item"   , variable.Item   )
+  .log( "Num" , variable.Num )
+  .log( "Breaks" , variable.Breaks )
+  .log( "Group"  , variable.Group  )
+)
+
 // Debriefing questionnaire
+
+PennController(
+  defaultText
+    .print()
+  ,
+  newText("<center><h2>Debriefing questions</h2></center>")
+  ,
+  newText("<p></p>")
+)
 
 // Thank you screen
 PennController.SendResults()

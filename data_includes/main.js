@@ -68,19 +68,13 @@ PennController(
 )
 
 //// Practice 1
-PennController(
 
-)
 
 //// Practice 2
-PennController(
 
-)
 
 //// Practice 3
-PennController(
 
-)
 
 // Pre-experiment screen
 

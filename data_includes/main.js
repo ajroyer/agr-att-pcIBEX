@@ -5,18 +5,14 @@ PennController(
     defaultText
         .print()
     ,
-    newText("<p>Welcome!</p>")
+    newText("<h1>Welcome!</h1>")
     ,
-    newText("<p>In this experiment, you will have to report which of two pictures matches a description.</p>")
-    ,
-    newText("<p>Press the <strong>F</strong> key for the picture on the left, or the <strong>J</strong> key for the picture on the right.</p>")
-    ,
-    newText("<p>Please enter your ID and then click the button below to start the experiment.</p>")
+    newText("<p> Below is a consent form you will need to read. After reading, please press the "I consent to participating" button. If you do not consent, please close the page</p>")
     ,
     newHtml("consent", "consent.html")
         .print()
     ,
-    newButton("Start")
+    newButton("I consent to participating")
         .print()
         .wait()
 )

@@ -33,6 +33,27 @@ PennController(
 
 // Trial template
 
+PennController.Template(
+  variable => PennController(
+    newAudio("sentence", variable.AudioFile)
+        .play()
+    ,
+    newText(variable.sentence)
+    ,
+    newSelector()
+        .settings.keys("1","2","3","4","5")
+        .settings.log()
+        .wait()
+    ,
+    getAudio("sentence")
+       .wait("")
+  )
+  .log( "ID" , getVar("ID") )
+  .log( "Item"   , variable.Item   )
+  .log( "Ending" , variable.Ending )
+  .log( "Group"  , variable.Group  )
+)
+
 // Practice trials
 
 // Pre-experiment screen

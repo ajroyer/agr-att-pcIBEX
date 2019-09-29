@@ -59,6 +59,26 @@ PennController(
 // Practice trials
 
 PennController(
+  defaultText
+    .print()
+  ,
+  newText("<center><h2> Practice </h2></center>")
+  ,
+  newText("<center><p> In order to familiarize yourself with the experiment, you will do 3 practice trials first. </p></center>")
+)
+
+//// Practice 1
+PennController(
+
+)
+
+//// Practice 2
+PennController(
+
+)
+
+//// Practice 3
+PennController(
 
 )
 

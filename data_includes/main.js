@@ -13,18 +13,13 @@ PennController(
     ,
     newText("<p>Please enter your ID and then click the button below to start the experiment.</p>")
     ,
-    newTextInput("ID")
+    newHtml("consent", "consent.html")
         .print()
     ,
     newButton("Start")
         .print()
         .wait()
-    ,
-    newVar("ID")
-        .settings.global()
-        .set( getTextInput("ID") )
 )
-.log( "ID" , getVar("ID") )
 
 PennController(
     newText("The fish swim in a tank which is perfectly round")

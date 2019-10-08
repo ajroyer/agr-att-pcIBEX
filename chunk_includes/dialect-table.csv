@@ -1,7 +1,7 @@
-wavname,group,item,number
-dialect_01_PL,dialect,d1,PL
-dialect_01_SG,dialect,d1,SG
-dialect_02_PL,dialect,d2,PL
-dialect_02_SG,dialect,d2,SG
-dialect_03_PL,dialect,d3,PL
-dialect_03_SG,dialect,d3,SG
+wavname,group,type,item,number
+dialect_01_PL,dialect,conj,d1,PL
+dialect_01_SG,dialect,conj,d1,SG
+dialect_02_PL,dialect,missing-s,d2,PL
+dialect_02_SG,dialect,missing-s,d2,SG
+dialect_03_PL,dialect,positive-anymore,d3,PL
+dialect_03_SG,dialect,positive-anymore,d3,SG

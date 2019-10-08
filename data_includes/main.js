@@ -1,7 +1,17 @@
-PennController.ResetPrefix(null); // Initiates PennController
+// Sequence of trials
+//PennController.Sequence( "setcounter", "welcome" , "consent" , "instructions" , randomize("picture") , randomize("rating") , "debriefing" , "send" , "exit" );
+//PennController.ResetPrefix(null);
+
+PennController.Sequence( "setcounter", "welcome" , "consent" , "instructions" , randomize("picture") , "send" , "exit" );
+PennController.ResetPrefix(null);
+
+// Increment counter
+PennController.SetCounter( "setcounter" );
+
+PennController.SendResults( "send" );
 
 // Welcome trial
-PennController(
+PennController( "welcome",
     defaultText
         .print()
     ,
@@ -12,8 +22,10 @@ PennController(
       .wait()
 )
 
+
+
 // Consent
-PennController(
+PennController( "consent",
     defaultText
         .print()
     ,
@@ -29,43 +41,22 @@ PennController(
         .wait()
 )
 
-// Get participant ID
-
-PennController(
-  defaultText
-    .print()
-  ,
-  newText("<p>Please enter your participant ID and then click the button below.</p>")
-  ,
-  newTextInput("ID")
-      .print()
-  ,
-  newVar("ID")
-    .settings.global()
-    .set( getTextInput("ID") )
-  ,
-  newButton("Continue to 'Instructions'")
-    .print()
-    .wait()
-)
-.log( "ID" , getVar("ID") )
-
 // Instructions
 
-PennController(
-  newHtml("", "")
-)
+//PennController( "instructions",
+//  newHtml("", "")
+//)
 
 // Practice trials
 
-PennController(
-  defaultText
-    .print()
-  ,
-  newText("<center><h2> Practice </h2></center>")
-  ,
-  newText("<center><p> In order to familiarize yourself with the experiment, you will do 3 practice trials first. </p></center>")
-)
+//PennController( "practiceInstructions",
+//  defaultText
+//    .print()
+//  ,
+//  newText("<center><h2> Practice </h2></center>")
+//  ,
+//  newText("<center><p> In order to familiarize yourself with the experiment, you will do 3 practice trials first. </p></center>")
+//)
 
 //// Practice 1
 
@@ -78,75 +69,79 @@ PennController(
 
 // Pre-experiment screen
 
-PennController(
-  newHtml("", "")
-)
+//PennController( "preExperimentScreen",
+//  newHtml("", "")
+//)
 
 // Experiment
-PennController.Template(
-  variable => PennController(
-    newAudio("sentence", variable.AudioFile)
+PennController.Template( "test.design.csv" ,
+  row => PennController(
+    newAudio("audioFilename", row.wavname)
         .play()
     ,
-    newSelector()
-        .settings.keys("1","2","3","4","5")
+    newScale("1 very unacceptable","","3 unsure","","5 very acceptable")
         .settings.log()
+        .settings.keys("1","2","3","4","5")
+        .settings.labelsPosition("top")
+        .settings.size("auto")
+        .print()
         .wait()
     ,
     getAudio("sentence")
        .wait("")
   )
-  .log( "ID" , getVar("ID") )
-  .log( "Item"   , variable.Item   )
-  .log( "Num" , variable.Num )
-  .log( "Breaks" , variable.Breaks )
-  .log( "Group"  , variable.Group  )
+//  .log( "ID" , getVar("ID") )
+  .log( "Item"   , row.item   )
+  .log( "BreakLoc" , row.breakLoc )
+  .log( "Plurality" , row.plurality )
+  .log( "Grammaticality"  , row.grammaticality  )
+  .log( "Condition" , row.cond )
+  .log( "AudioFile", row.wavname )
 )
 
 // Dialect survey
 
 //// Instructions
 
-PennController(
-  newHtml("", "")
-)
+//PennController(
+//  newHtml("", "")
+//)
 
 //// Survey questions
-PennController.Template(
-  variable => PennController(
-    newAudio("sentence", variable.AudioFile)
-        .play()
-    ,
-    newSelector()
-        .settings.keys("1","2","3","4","5")
-        .settings.log()
-        .wait()
-    ,
-    getAudio("sentence")
-       .wait("")
-  )
-  .log( "ID" , getVar("ID") )
-  .log( "Item"   , variable.Item   )
-  .log( "Num" , variable.Num )
-  .log( "Breaks" , variable.Breaks )
-  .log( "Group"  , variable.Group  )
-)
+//PennController.Template(
+//  variable => PennController(
+//    newAudio("sentence", variable.AudioFile)
+//        .play()
+//    ,
+//    newSelector()
+//        .settings.keys("1","2","3","4","5")
+//        .settings.log()
+//        .wait()
+//    ,
+//    getAudio("sentence")
+//       .wait("")
+//  )
+//  .log( "ID" , getVar("ID") )
+//  .log( "Item"   , variable.Item   )
+//  .log( "Num" , variable.Num )
+//  .log( "Breaks" , variable.Breaks )
+//  .log( "Group"  , variable.Group  )
+//)
 
 // Debriefing questionnaire
 
-PennController(
-  defaultText
-    .print()
-  ,
-  newText("<center><h2>Debriefing questions</h2></center>")
-  ,
-  newText("<p></p>")
-)
+//PennController(
+//  defaultText
+//    .print()
+//  ,
+//  newText("<center><h2>Debriefing questions</h2></center>")
+//  ,
+//  newText("<p></p>")
+//)
 
 // Thank you screen
-PennController.SendResults()
 
-PennController(
+PennController( "exit" ,
     newText("<p>Thank you for your participation!</p>")
         .print()
     ,

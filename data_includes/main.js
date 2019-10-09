@@ -2,8 +2,9 @@
 //PennController.Sequence( "setcounter", "welcome" , "consent" , "instructions" , randomize("picture") , randomize("rating") , "debriefing" , "send" , "exit" );
 //PennController.ResetPrefix(null);
 
-PennController.Sequence( "setcounter", "welcome" , "consent" , "instructions" , randomize("picture") , "send" , "exit" );
+PennController.Sequence( "setcounter", "consent", rshuffle( startsWith(fill) , rshuffle(startsWith(crit_e),startsWith(crit_n),startsWith(crit_n)) ) , "send" , "exit" );
 PennController.ResetPrefix(null);
+
 
 // Increment counter
 PennController.SetCounter( "setcounter" );
@@ -11,16 +12,16 @@ PennController.SetCounter( "setcounter" );
 PennController.SendResults( "send" );
 
 // Welcome trial
-PennController( "welcome",
-    defaultText
-        .print()
-    ,
-    newText("<h1>Welcome!</h1>")
-    ,
-    newButton("Continue")
-      .print()
-      .wait()
-)
+//PennController( "welcome",
+//    defaultText
+//       .print()
+//    ,
+//    newText("<h1>Welcome!</h1>")
+//    ,
+//    newButton("Continue")
+//      .print()
+//      .wait()
+//)
 
 
 
@@ -31,7 +32,7 @@ PennController( "consent",
     ,
     newText("<h2>Consenting Process</h2>")
     ,
-    newText("<p> Below is a consent form you will need to read. After reading, please press the "I consent to participating" button. If you do not consent, please close the page</p>")
+    newText("<p> Below is a consent form you will need to read. After reading, please press the 'I consent to participating' button. If you do not consent, please close the page</p>")
     ,
     newHtml("consent", "consent.html")
         .print()
@@ -40,6 +41,7 @@ PennController( "consent",
         .print()
         .wait()
 )
+.log( "uniqueid" , PennController.GetURLParameter( "id" ) )
 
 // Instructions
 
@@ -74,8 +76,8 @@ PennController( "consent",
 //)
 
 // Experiment
-PennController.Template( "test.design.csv" ,
-  row => PennController(
+PennController.Template( PennController.GetTable( "test-design.csv" ) ,
+  row => PennController( "rating",
     newAudio("audioFilename", row.wavname)
         .play()
     ,

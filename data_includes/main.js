@@ -1,6 +1,8 @@
 
 PennController.ResetPrefix(null);
 
+var PennController.Sequence(anyType())
+
 // Consent
 PennController(
     defaultText

@@ -97,13 +97,6 @@ PennController.Template( PennController.GetTable( "test-design.csv" )
     getAudio("audioFilename")
        .wait("")
   )
-//  .log( "ID" , getVar("ID") )
-  .log( "Item"   , row.item   )
-  .log( "BreakLoc" , row.breakLoc )
-  .log( "Plurality" , row.plurality )
-  .log( "Grammaticality"  , row.grammaticality  )
-  .log( "Condition" , row.cond )
-  .log( "AudioFile", row.wavname )
 )
 
 // Dialect survey

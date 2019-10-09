@@ -80,6 +80,9 @@ PennController.Template( PennController.GetTable( "test-design.csv" )
                                         .setGroupColumn( "cond" )
 ,
   row => PennController( "rating",
+    newText("sentence", row.sentence)
+      .print()
+  ,
     newAudio("audioFilename", row.wavname)
         .play()
     ,
@@ -91,7 +94,7 @@ PennController.Template( PennController.GetTable( "test-design.csv" )
         .print()
         .wait()
     ,
-    getAudio("sentence")
+    getAudio("audioFilename")
        .wait("")
   )
 //  .log( "ID" , getVar("ID") )

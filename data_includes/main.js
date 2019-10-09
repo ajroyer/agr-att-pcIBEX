@@ -41,8 +41,6 @@ PennController( "consent",
         .print()
         .wait()
 )
-.log( "uniqueid" , PennController.GetURLParameter( "id" ) )
-
 // Instructions
 
 //PennController( "instructions",
@@ -76,7 +74,7 @@ PennController( "consent",
 //)
 
 // Experiment
-PennController.Template( PennController.GetTable( "test-design.csv" )
+PennController.Template( PennController.GetTable( "testdesign.csv" )
                                         .setGroupColumn( "cond" )
 ,
   row => PennController( "rating",

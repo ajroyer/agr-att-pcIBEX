@@ -2,7 +2,7 @@
 //PennController.Sequence( "setcounter", "welcome" , "consent" , "instructions" , randomize("picture") , randomize("rating") , "debriefing" , "send" , "exit" );
 //PennController.ResetPrefix(null);
 
-PennController.Sequence( rshuffle( "rating") );
+PennController.Sequence( "consent" ,randomize( "rating"), "exit" );
 PennController.ResetPrefix(null);
 
 

@@ -2,7 +2,7 @@
 //PennController.Sequence( "setcounter", "welcome" , "consent" , "instructions" , randomize("picture") , randomize("rating") , "debriefing" , "send" , "exit" );
 //PennController.ResetPrefix(null);
 
-PennController.Sequence( "consent" ,randomize( "rating"), "exit" );
+PennController.Sequence( "consent" );
 PennController.ResetPrefix(null);
 
 
@@ -74,28 +74,28 @@ PennController( "consent",
 //)
 
 // Experiment
-PennController.Template( PennController.GetTable( "testdesign.csv" )
-                                        .setGroupColumn( "cond" )
-,
-  row => PennController( "rating",
-    newText("sentence", row.sentence)
-      .print()
-  ,
-    newAudio("audioFilename", row.wavname)
-        .play()
-    ,
-    newScale("1 very unacceptable","","3 unsure","","5 very acceptable")
-        .settings.log()
-        .settings.keys("1","2","3","4","5")
-        .settings.labelsPosition("top")
-        .settings.size("auto")
-        .print()
-        .wait()
-    ,
-    getAudio("audioFilename")
-       .wait("")
-  )
-)
+//PennController.Template( PennController.GetTable( "testdesign.csv" )
+//                                        .setGroupColumn( "cond" )
+//,
+//  row => PennController( "rating",
+//    newText("sentence", row.sentence)
+//      .print()
+//  ,
+//    newAudio("audioFilename", row.wavname)
+//        .play()
+//    ,
+//    newScale("1 very unacceptable","","3 unsure","","5 very acceptable")
+//        .settings.log()
+//        .settings.keys("1","2","3","4","5")
+//        .settings.labelsPosition("top")
+//        .settings.size("auto")
+//        .print()
+//        .wait()
+//    ,
+//    getAudio("audioFilename")
+//       .wait("")
+//  )
+//)
 
 // Dialect survey
 
@@ -139,13 +139,13 @@ PennController.Template( PennController.GetTable( "testdesign.csv" )
 
 // Thank you screen
 
-PennController( "exit" ,
-    newText("<p>Thank you for your participation!</p>")
-        .print()
-    ,
-    newText("<p><a href='https://www.put.your/platform/confirmation/link.here'>Click here to validate your participation.</a></p>")
-        .print()
-    ,
-    newButton("void")
-        .wait()
-)
+//PennController( "exit" ,
+//    newText("<p>Thank you for your participation!</p>")
+//        .print()
+//    ,
+//    newText("<p><a href='https://www.put.your/platform/confirmation/link.here'>Click here to validate your participation.</a></p>")
+//        .print()
+//    ,
+//    newButton("void")
+//        .wait()
+//)

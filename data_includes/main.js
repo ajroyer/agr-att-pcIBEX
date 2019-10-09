@@ -7,10 +7,10 @@ PennController.ResetPrefix(null);
 
 
 // Increment counter
-PennController.SetCounter( "setcounter" );
+//PennController.SetCounter( "setcounter" );
 
-PennController.SendResults( "send" );
-
+//PennController.SendResults( "send" );
+//
 // Welcome trial
 //PennController( "welcome",
 //    defaultText
@@ -34,7 +34,7 @@ PennController( "consent",
     ,
     newText("<p> Below is a consent form you will need to read. After reading, please press the 'I consent to participating' button. If you do not consent, please close the page</p>")
     ,
-    newHtml("consent", "consent.html")
+    newHtml("consentform", "consent.html")
         .print()
     ,
     newButton("I consent to participating")

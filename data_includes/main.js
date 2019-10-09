@@ -1,9 +1,8 @@
 
-//PennController.Sequence( "consent" );
 PennController.ResetPrefix(null);
 
 // Consent
-PennController( "consent",
+PennController(
     defaultText
         .print()
     ,

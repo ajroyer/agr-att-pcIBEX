@@ -2,7 +2,7 @@
 //PennController.Sequence( "setcounter", "welcome" , "consent" , "instructions" , randomize("picture") , randomize("rating") , "debriefing" , "send" , "exit" );
 //PennController.ResetPrefix(null);
 
-PennController.Sequence( "setcounter", "consent", rshuffle( startsWith("fill") , rshuffle(startsWith("crit_e"),startsWith("crit_n"),startsWith("crit_l")) ) , "send" , "exit" );
+PennController.Sequence( rshuffle( startsWith("fill") , rshuffle(startsWith("crit_e"),startsWith("crit_n"),startsWith("crit_l")) ) );
 PennController.ResetPrefix(null);
 
 
@@ -76,7 +76,9 @@ PennController( "consent",
 //)
 
 // Experiment
-PennController.Template( PennController.GetTable( "test-design.csv" ) ,
+PennController.Template( PennController.GetTable( "test-design.csv" )
+                                        .setGroupColumn( "cond" )
+,
   row => PennController( "rating",
     newAudio("audioFilename", row.wavname)
         .play()
